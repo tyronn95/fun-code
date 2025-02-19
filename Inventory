@@ -1,0 +1,52 @@
+typedef struct{
+    int id;
+    char *name;
+    char *type;
+    int durability;
+    int damage;
+} Item;
+
+Item createItem(int* ID, int value){
+    ++*ID;
+    if(value == 1){
+        Item item = {
+                .id = *ID,
+                .name = "épee",
+                .type = "arme",
+                .durability = 10,
+                .damage = 10,
+        };
+        return item;
+    }
+
+    Item item = {
+            .id = *ID,
+            .name = "nothing",
+            .type = "item",
+    };
+    return item;
+}
+
+Item* createInventory(int* ID){
+    Item* inventory = malloc(sizeof(Item)*10);
+    for(int i = 0; i<10; ++i){
+        inventory[i] = createItem(ID, 0);
+        printf("%d|", inventory[i].id);
+    }
+    printf("\nEND");
+}
+
+void printInventory(Item* inventory){
+    printf("\nwow\n");
+    for(int i = 0; i < 10; ++i){
+        printf("%d |", inventory[i].id);
+    }
+}
+
+void addItem(Item* inventory, Item* item){
+    for(int i = 0; i < 10; ++i){
+        if(inventory[i].name = "nothing"){
+            inventory[i] = *item;
+        }
+    }
+}
